@@ -1,0 +1,64 @@
+{
+  "id": "view-carol-next-visit",
+  "capability": "view_appointments",
+  "instruction": "When is Carol Okafor's next technician visit?",
+  "goal": {
+    "expected": {}
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_appointments"
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_appointments"
+      }
+    ],
+    "ordering": []
+  },
+  "policies": [],
+  "level3": {
+    "expected_intent": "view_appointments",
+    "expected_slots": {
+      "subscriber_name": "Carol Okafor"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 6
+  },
+  "variants": [
+    {
+      "text": "Ticket: need date of Carol Okafor's upcoming technician visit.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please let us know when Carol Okafor's next technician appointment is scheduled?",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Looking up account activity for subscriber Carol Okafor \u2014 we need to confirm the date and time of her next scheduled technician visit so we can relay it back to her.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Next tech visit for Carol Okafor \u2014 when?",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

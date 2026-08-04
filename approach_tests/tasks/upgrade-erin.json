@@ -1,0 +1,128 @@
+{
+  "id": "upgrade-erin-fiber500",
+  "capability": "service_update",
+  "instruction": "Upgrade Erin Walsh's internet plan to Fiber 500. Her account email is erin.walsh@example.com.",
+  "goal": {
+    "expected": {
+      "orders": {
+        "ORD-0104": {
+          "plan_id": 11
+        }
+      }
+    }
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_orders"
+      },
+      {
+        "tool": "list_plans"
+      },
+      {
+        "tool": "search_policy"
+      },
+      {
+        "tool": "request_confirmation"
+      },
+      {
+        "tool": "update_order_plan",
+        "args_include": {
+          "order_id": "ORD-0104",
+          "new_plan_code": "fiber-500"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_orders"
+      },
+      {
+        "source": "list_orders",
+        "target": "update_order_plan"
+      },
+      {
+        "source": "list_plans",
+        "target": "update_order_plan"
+      }
+    ],
+    "ordering": [
+      {
+        "source": "search_policy",
+        "target": "update_order_plan"
+      },
+      {
+        "source": "request_confirmation",
+        "target": "update_order_plan"
+      }
+    ]
+  },
+  "policies": [
+    {
+      "kind": "require_before",
+      "first": "request_confirmation",
+      "then": "update_order_plan"
+    },
+    {
+      "kind": "require_before",
+      "first": "search_policy",
+      "then": "update_order_plan"
+    }
+  ],
+  "level3": {
+    "expected_intent": "service_update",
+    "expected_slots": {
+      "subscriber_name": "Erin Walsh",
+      "target_plan": "Fiber 500"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ],
+    "binding_cases": [
+      {
+        "tool": "update_order_plan",
+        "history": [
+          "list_orders({\"subscriber_id\": \"SUB-0005\"}) -> [{\"id\": \"ORD-0104\", \"state\": \"active\", \"plan_code\": \"fiber-100\"}, {\"id\": \"ORD-0105\", \"state\": \"cancelled\"}]",
+          "list_plans({}) -> [{\"code\": \"fiber-100\"}, {\"code\": \"fiber-500\"}, {\"code\": \"fiber-1gig\"}, {\"code\": \"fiber-2gig\"}]"
+        ],
+        "expected_args": {
+          "order_id": "ORD-0104",
+          "new_plan_code": "fiber-500"
+        }
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 12
+  },
+  "variants": [
+    {
+      "text": "Ticket: upgrade internet plan to Fiber 500 for Erin Walsh (acct email: erin.walsh@example.com).",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please move Erin Walsh up to the Fiber 500 internet plan? The email on her account is erin.walsh@example.com.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Subscriber Erin Walsh, identified by account email erin.walsh@example.com, should have her internet service upgraded to the Fiber 500 tier \u2014 please process that change.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Requesting a plan upgrade: Erin Walsh needs to go to Fiber 500 for internet. Her account is registered under erin.walsh@example.com.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

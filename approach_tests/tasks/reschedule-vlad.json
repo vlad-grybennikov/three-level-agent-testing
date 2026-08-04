@@ -1,0 +1,160 @@
+{
+  "id": "reschedule-vlad-aug5-afternoon",
+  "capability": "reschedule_appointment",
+  "instruction": "Reschedule Vlad Grybennikov's maintenance visit to the afternoon of August 5.",
+  "goal": {
+    "expected": {
+      "availability_slots": {
+        "SLT-0322": {
+          "status": "available"
+        },
+        "SLT-0326": {
+          "status": "booked"
+        }
+      },
+      "appointments": {
+        "APT-0407": {
+          "slot_id": "SLT-0326",
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_appointments"
+      },
+      {
+        "tool": "list_available_slots",
+        "args_include": {
+          "region": "west"
+        }
+      },
+      {
+        "tool": "release_slot",
+        "args_include": {
+          "slot_id": "SLT-0322"
+        }
+      },
+      {
+        "tool": "book_slot",
+        "args_include": {
+          "slot_id": "SLT-0326"
+        }
+      },
+      {
+        "tool": "update_appointment",
+        "args_include": {
+          "appointment_id": "APT-0407"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_appointments"
+      },
+      {
+        "source": "list_appointments",
+        "target": "release_slot"
+      },
+      {
+        "source": "list_appointments",
+        "target": "update_appointment"
+      },
+      {
+        "source": "list_available_slots",
+        "target": "book_slot"
+      },
+      {
+        "source": "list_available_slots",
+        "target": "update_appointment"
+      }
+    ],
+    "ordering": [
+      {
+        "source": "list_appointments",
+        "target": "release_slot"
+      },
+      {
+        "source": "list_available_slots",
+        "target": "book_slot"
+      },
+      {
+        "source": "book_slot",
+        "target": "update_appointment"
+      }
+    ]
+  },
+  "policies": [],
+  "level3": {
+    "expected_intent": "reschedule_appointment",
+    "expected_slots": {
+      "subscriber_name": "Vlad Grybennikov",
+      "target_date": "2026-08-05",
+      "target_time_window": "afternoon"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      },
+      {
+        "history": [
+          "find_subscriber({\"name_or_email\": \"Vlad Grybennikov\"}) -> {\"id\": \"SUB-0007\", \"full_name\": \"Vlad Grybennikov\", \"state\": \"active\"}"
+        ],
+        "expected": "list_appointments"
+      }
+    ],
+    "binding_cases": [
+      {
+        "tool": "release_slot",
+        "history": [
+          "list_appointments({\"subscriber_id\": \"SUB-0007\", \"status\": \"pending\"}) -> [{\"id\": \"APT-0407\", \"order_id\": \"ORD-0108\", \"slot_id\": \"SLT-0322\", \"kind\": \"maintenance\", \"status\": \"pending\", \"date\": \"2026-08-04T11:00:00Z\"}]"
+        ],
+        "expected_args": {
+          "slot_id": "SLT-0322"
+        }
+      },
+      {
+        "tool": "book_slot",
+        "history": [
+          "list_available_slots({\"region\": \"west\", \"date\": \"2026-08-05\"}) -> [{\"id\": \"SLT-0324\", \"starts_at\": \"2026-08-05T09:00:00Z\"}, {\"id\": \"SLT-0325\", \"starts_at\": \"2026-08-05T11:00:00Z\"}, {\"id\": \"SLT-0326\", \"starts_at\": \"2026-08-05T14:00:00Z\"}]"
+        ],
+        "expected_args": {
+          "slot_id": "SLT-0326"
+        }
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 18
+  },
+  "variants": [
+    {
+      "text": "Move Vlad Grybennikov's maintenance visit to the afternoon of August 5.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Ticket: reschedule maint. visit \u2014 Vlad Grybennikov \u2014 new slot: Aug 5, afternoon.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please push Vlad Grybennikov's maintenance appointment back to the afternoon of August 5?",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "The subscriber, Vlad Grybennikov, needs his scheduled maintenance visit changed; kindly rebook it for the afternoon of August 5 rather than its current slot.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

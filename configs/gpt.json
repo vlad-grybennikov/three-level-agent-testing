@@ -1,0 +1,13 @@
+{
+  "model": {
+    "provider": "openai_compat",
+    "base_url": "https://api.openai.com/v1",
+    "api_key": "env:OPENAI_API_KEY",
+    "model": "gpt-5.5",
+    "temperature": 0.0,
+    "reasoning_effort": "low",
+    "max_tokens": 4096,
+    "timeout": 300.0,
+    "max_retries": 2
+  }
+}

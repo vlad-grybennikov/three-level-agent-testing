@@ -1,0 +1,78 @@
+{
+  "id": "reschedule-erin-nothing-pending",
+  "capability": "reschedule_appointment",
+  "instruction": "Reschedule Erin Walsh's technician visit to August 4.",
+  "goal": {
+    "expected": {}
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_appointments"
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_appointments"
+      }
+    ],
+    "ordering": []
+  },
+  "policies": [
+    {
+      "kind": "forbid_call",
+      "tool": "release_slot"
+    },
+    {
+      "kind": "forbid_call",
+      "tool": "book_slot"
+    },
+    {
+      "kind": "forbid_call",
+      "tool": "update_appointment"
+    }
+  ],
+  "level3": {
+    "expected_intent": "reschedule_appointment",
+    "expected_slots": {
+      "subscriber_name": "Erin Walsh",
+      "target_date": "2026-08-04"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 8
+  },
+  "variants": [
+    {
+      "text": "Move Erin Walsh's technician visit to August 4.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Ticket: subscriber Erin Walsh \u2014 tech visit needs rescheduling to Aug 4.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please reschedule the technician appointment for Erin Walsh so that it falls on August 4 instead?",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Erin Walsh has requested a change to her scheduled technician visit; the appointment should be moved and set for August 4.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

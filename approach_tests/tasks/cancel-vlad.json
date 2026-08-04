@@ -1,0 +1,173 @@
+{
+  "id": "cancel-vlad-order",
+  "capability": "cancel_order",
+  "instruction": "Cancel Vlad Grybennikov's internet order.",
+  "goal": {
+    "expected": {
+      "orders": {
+        "ORD-0108": {
+          "state": "cancelled"
+        }
+      },
+      "appointments": {
+        "APT-0407": {
+          "status": "cancelled",
+          "slot_id": null
+        }
+      },
+      "availability_slots": {
+        "SLT-0322": {
+          "status": "available"
+        }
+      }
+    }
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_orders"
+      },
+      {
+        "tool": "list_invoices",
+        "args_include": {
+          "order_id": "ORD-0108"
+        }
+      },
+      {
+        "tool": "search_policy"
+      },
+      {
+        "tool": "list_appointments"
+      },
+      {
+        "tool": "update_appointment",
+        "args_include": {
+          "appointment_id": "APT-0407"
+        }
+      },
+      {
+        "tool": "release_slot",
+        "args_include": {
+          "slot_id": "SLT-0322"
+        }
+      },
+      {
+        "tool": "request_confirmation"
+      },
+      {
+        "tool": "cancel_order",
+        "args_include": {
+          "order_id": "ORD-0108"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_orders"
+      },
+      {
+        "source": "find_subscriber",
+        "target": "list_appointments"
+      },
+      {
+        "source": "list_orders",
+        "target": "list_invoices"
+      },
+      {
+        "source": "list_orders",
+        "target": "cancel_order"
+      },
+      {
+        "source": "list_appointments",
+        "target": "update_appointment"
+      },
+      {
+        "source": "list_appointments",
+        "target": "release_slot"
+      }
+    ],
+    "ordering": [
+      {
+        "source": "search_policy",
+        "target": "cancel_order"
+      },
+      {
+        "source": "request_confirmation",
+        "target": "cancel_order"
+      },
+      {
+        "source": "update_appointment",
+        "target": "cancel_order"
+      },
+      {
+        "source": "release_slot",
+        "target": "cancel_order"
+      }
+    ]
+  },
+  "policies": [
+    {
+      "kind": "require_before",
+      "first": "request_confirmation",
+      "then": "cancel_order"
+    },
+    {
+      "kind": "require_before",
+      "first": "search_policy",
+      "then": "cancel_order"
+    }
+  ],
+  "level3": {
+    "expected_intent": "cancel_order",
+    "expected_slots": {
+      "subscriber_name": "Vlad Grybennikov"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ],
+    "binding_cases": [
+      {
+        "tool": "cancel_order",
+        "history": [
+          "list_orders({\"subscriber_id\": \"SUB-0007\"}) -> [{\"id\": \"ORD-0108\", \"state\": \"active\", \"plan_code\": \"fiber-1gig\"}]"
+        ],
+        "expected_args": {
+          "order_id": "ORD-0108"
+        }
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 25
+  },
+  "variants": [
+    {
+      "text": "Cancel internet order \u2014 subscriber: Vlad Grybennikov.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Please go ahead and cancel the internet order placed for Vlad Grybennikov.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you take care of cancelling the internet order that was submitted for the subscriber Vlad Grybennikov? The order should not proceed.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Action needed: the internet order belonging to Vlad Grybennikov needs to be cancelled.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

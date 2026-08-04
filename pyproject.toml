@@ -1,0 +1,21 @@
+[project]
+name = "telecom-aut"
+version = "0.1.0"
+description = "Telecom customer-service agent under test: deterministic environment + four-stage pipeline (study artifact, not a product)"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "langchain-core>=1",
+    "langchain-openai>=1",
+    "langgraph>=1",
+    "anthropic>=0.120",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "approach_tests"]

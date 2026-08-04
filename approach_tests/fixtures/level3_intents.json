@@ -1,0 +1,434 @@
+[
+  {
+    "utterance": "What plan is Dev Patel on?",
+    "expected": "subscriber_info",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "What is the active order id for Erin Walsh?",
+    "expected": "subscriber_info",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Show Frank Osei's account state.",
+    "expected": "subscriber_info",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "When is Carol Okafor's next visit?",
+    "expected": "view_appointments",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "List Bruno Silva's appointments, past and future.",
+    "expected": "view_appointments",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Does Vlad Grybennikov have any technician visits booked?",
+    "expected": "view_appointments",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Move Alice Nguyen's repair visit to Wednesday morning.",
+    "expected": "reschedule_appointment",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Reschedule APT-0404 to August 3.",
+    "expected": "reschedule_appointment",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Vlad Grybennikov asked to shift his maintenance visit to the afternoon.",
+    "expected": "reschedule_appointment",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Upgrade Erin Walsh to Fiber 1 Gig.",
+    "expected": "service_update",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Switch order ORD-0100 to fiber-500.",
+    "expected": "service_update",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Dev Patel wants a cheaper plan.",
+    "expected": "service_update",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Cancel Bruno Silva's internet order.",
+    "expected": "cancel_order",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Carol Okafor wants to close her account.",
+    "expected": "cancel_order",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Terminate service for order ORD-0108.",
+    "expected": "cancel_order",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "What's the weather in the north region today?",
+    "expected": "unsupported",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Give Bruno Silva a 50 percent discount.",
+    "expected": "unsupported",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Order a replacement router for the on-call technician.",
+    "expected": "unsupported",
+    "source": "author",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need the current plan for Dev Patel.",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please confirm which plan Dev Patel is subscribed to?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, just trying to figure out what plan Dev Patel's actually on right now \u2014 can you check?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need the active order id for Erin Walsh.",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please tell me which order id is currently active for Erin Walsh?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, what's the order id that's active on Erin Walsh's account right now?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Pull up the account state for Frank Osei.",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please display Frank Osei's current account state?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need a look at what state Frank Osei's account is in \u2014 can you bring that up?",
+    "expected": "subscriber_info",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need the date of Carol Okafor's next visit.",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please let me know when Carol Okafor's next visit is scheduled?",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, just checking \u2014 when's Carol Okafor due to be seen next?",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Pull up all appointments for Bruno Silva \u2014 both past and upcoming.",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please provide a full listing of Bruno Silva's appointments, including those already completed and those still scheduled?",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need Bruno Silva's appointment history plus anything he's got booked going forward.",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Checking whether Vlad Grybennikov has any technician appointments on the books.",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please confirm if there are any technician visits currently scheduled for Vlad Grybennikov?",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, just wondering \u2014 has Vlad Grybennikov got a tech visit booked in at all?",
+    "expected": "view_appointments",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Reschedule Alice Nguyen's repair appointment for Wednesday morning.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Please shift the repair visit booked for Alice Nguyen to Wednesday morning instead.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, can we bump Alice Nguyen's repair call to Wednesday morning?",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Move APT-0404 to August 3.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please reschedule appointment APT-0404 so that it falls on August 3 instead?",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need APT-0404 pushed to Aug 3 \u2014 can you get that changed on your end?",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Ticket: Vlad Grybennikov requests maintenance visit moved to the afternoon.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please move Vlad Grybennikov's scheduled maintenance appointment to an afternoon slot? He called in to ask for the change.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "So Vlad Grybennikov got in touch and said he'd rather have his maintenance visit in the afternoon instead.",
+    "expected": "reschedule_appointment",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Move Erin Walsh up to the Fiber 1 Gig plan.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Please process an upgrade for subscriber Erin Walsh to Fiber 1 Gig.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Acct: Erin Walsh \u2014 upgrade to Fiber 1 Gig.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "ORD-0100 \u2014 change plan to fiber-500.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please update order ORD-0100 so that it's set to fiber-500 instead?",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "The subscriber's order ORD-0100 needs to be moved over to fiber-500, so go ahead and swap the plan on that order to fiber-500.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Dev Patel is asking to move to a lower-cost plan.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Sub Dev Patel \u2014 requesting cheaper plan option.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you help out here? Dev Patel has let us know he'd like a plan that costs less than what he's on now.",
+    "expected": "service_update",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Please cancel the internet order for Bruno Silva.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Order cancellation required \u2014 internet service, subscriber Bruno Silva.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, can you go ahead and cancel that internet order Bruno Silva placed?",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Account closure requested by Carol Okafor.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Carol Okafor has asked us to go ahead and shut down her account \u2014 could someone process that?",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Subscriber Carol Okafor is looking to cancel and close out her account.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Cancel service on order ORD-0108.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Please proceed with terminating the service associated with order ORD-0108.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need order ORD-0108's service shut down \u2014 go ahead and end it.",
+    "expected": "cancel_order",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need today's weather for the north region.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please let me know what the weather is like in the north region today?",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Hey, what's it looking like weather-wise up in the north region today?",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Apply a 50 percent discount to Bruno Silva's account.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Please could you set up a 50 percent discount for the subscriber Bruno Silva? Thank you.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Need Bruno Silva knocked down by 50 percent \u2014 go ahead and put that discount through for him.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Replacement router needed for on-call technician \u2014 please order.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "Could you please place an order for a new router to replace the one for the on-call technician?",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  },
+  {
+    "utterance": "We need to get a replacement router ordered for the on-call tech, if you don't mind sorting that out.",
+    "expected": "unsupported",
+    "source": "llm",
+    "reviewed": true
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "id": "cancel-bruno-refusal-unpaid",
+  "capability": "cancel_order",
+  "instruction": "Cancel Bruno Silva's internet order.",
+  "goal": {
+    "expected": {}
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_orders"
+      },
+      {
+        "tool": "list_invoices",
+        "args_include": {
+          "order_id": "ORD-0101"
+        }
+      },
+      {
+        "tool": "search_policy"
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_orders"
+      },
+      {
+        "source": "list_orders",
+        "target": "list_invoices"
+      }
+    ],
+    "ordering": []
+  },
+  "policies": [
+    {
+      "kind": "forbid_call",
+      "tool": "cancel_order"
+    }
+  ],
+  "level3": {
+    "expected_intent": "cancel_order",
+    "expected_slots": {
+      "subscriber_name": "Bruno Silva"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 10
+  },
+  "variants": [
+    {
+      "text": "Cancel the internet order for Bruno Silva.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Please proceed with cancelling the internet order placed by Bruno Silva.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Action required: Bruno Silva's internet order needs to be cancelled \u2014 please cancel it.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you go ahead and cancel the internet order that Bruno Silva has on file? The subscriber wants it cancelled.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

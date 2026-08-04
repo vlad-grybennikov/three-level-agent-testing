@@ -1,0 +1,12 @@
+{
+  "model": {
+    "provider": "openai_compat",
+    "base_url": "http://localhost:11434/v1",
+    "api_key": "ollama",
+    "model": "qwen3.5",
+    "temperature": 0.0,
+    "seed": 7,
+    "reasoning_effort": "none",
+    "max_tokens": 1000
+  }
+}

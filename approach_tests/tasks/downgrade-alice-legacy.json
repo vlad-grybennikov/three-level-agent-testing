@@ -1,0 +1,73 @@
+{
+  "id": "downgrade-alice-legacy-refusal",
+  "capability": "service_update",
+  "instruction": "Switch Alice Nguyen's order to the Fiber 100 Mbps plan.",
+  "goal": {
+    "expected": {}
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_orders"
+      },
+      {
+        "tool": "search_policy"
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_orders"
+      }
+    ],
+    "ordering": []
+  },
+  "policies": [
+    {
+      "kind": "forbid_call",
+      "tool": "update_order_plan"
+    }
+  ],
+  "level3": {
+    "expected_intent": "service_update",
+    "expected_slots": {
+      "subscriber_name": "Alice Nguyen",
+      "target_plan": "Fiber 100"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 10
+  },
+  "variants": [
+    {
+      "text": "Change order for Alice Nguyen to Fiber 100 Mbps plan.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please update Alice Nguyen's order so that it reflects the Fiber 100 Mbps plan instead?",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Alice Nguyen's order needs to be moved over to the Fiber 100 Mbps plan \u2014 please make that change on her account.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Request: plan change on Alice Nguyen's existing order. The order should be switched to Fiber 100 Mbps. Once that swap has been applied, the order should show the Fiber 100 Mbps plan as the selected service.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}

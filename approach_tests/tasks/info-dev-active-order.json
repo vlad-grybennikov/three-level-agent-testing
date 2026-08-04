@@ -1,0 +1,74 @@
+{
+  "id": "info-dev-active-order-id",
+  "capability": "subscriber_info",
+  "instruction": "What is the active order id for Dev Patel?",
+  "goal": {
+    "expected": {}
+  },
+  "dependency": {
+    "required_ops": [
+      {
+        "tool": "find_subscriber"
+      },
+      {
+        "tool": "list_orders"
+      }
+    ],
+    "edges": [
+      {
+        "source": "find_subscriber",
+        "target": "list_orders"
+      }
+    ],
+    "ordering": []
+  },
+  "policies": [
+    {
+      "kind": "forbid_call",
+      "tool": "cancel_order"
+    },
+    {
+      "kind": "forbid_call",
+      "tool": "update_order_plan"
+    }
+  ],
+  "level3": {
+    "expected_intent": "subscriber_info",
+    "expected_slots": {
+      "subscriber_name": "Dev Patel",
+      "requested_field": "active order id"
+    },
+    "selection_cases": [
+      {
+        "history": [],
+        "expected": "find_subscriber"
+      }
+    ]
+  },
+  "annotation": {
+    "annotator": "author",
+    "minutes": 6
+  },
+  "variants": [
+    {
+      "text": "Need the active order id on Dev Patel's account.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Could you please look up and provide the active order id associated with the subscriber Dev Patel?",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "Lookup req: Dev Patel \u2014 return active order id.",
+      "source": "llm",
+      "reviewed": true
+    },
+    {
+      "text": "We're trying to confirm a detail on this subscriber's file, so if you could check the record for Dev Patel and let us know which order id is currently active, that would be very helpful.",
+      "source": "llm",
+      "reviewed": true
+    }
+  ]
+}
