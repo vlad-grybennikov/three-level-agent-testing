@@ -67,9 +67,9 @@ intents: check-model ## LLM paraphrases for the intent dataset (review after)  [
 review-list: ## show all files with still-unreviewed LLM generations
 	@grep -rl '"reviewed": false' approach_tests || echo "nothing awaiting review"
 
-NB ?= report_analysis.ipynb
+NB ?= report_summary_opus.ipynb
 
-notebook: ## open a Jupyter notebook (NB=report_summary.ipynb for the per-report one)
+notebook: ## open a Jupyter notebook (NB=report_summary_qwen.ipynb for the qwen one)
 	$(PY) -m notebook $(NB)
 
 export: ## export all tables (CSV/MD) + figures (PNG/PDF) from report-*.json to exports/
