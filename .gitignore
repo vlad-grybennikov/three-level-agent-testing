@@ -1,0 +1,37 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Runtime artifacts (episode databases, per-interaction logs)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+chat_logs/
+
+# Next.js UI
+chat-ui/node_modules/
+chat-ui/.next/
+
+# Environment / secrets (e.g. hosted-model API keys, NEXT_PUBLIC_API_BASE)
+.env
+.env.*
+chat-ui/.env*
+
+# OS / editor
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/
+
+# Paper related
+PAPER_NOTES.md
+exports/
+
+# Local working notes
+test-prompts.txt
